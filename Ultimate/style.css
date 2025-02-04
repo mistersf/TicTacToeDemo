@@ -1,0 +1,32 @@
+body {
+    font-size: 64px;
+}
+
+/* Gross css stack */
+#game > table > tr > td > * {
+    display:inline;
+}
+
+.active {
+    background-color: yellow;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    --border-width: 4px;
+}
+
+td {
+    padding: 4px;
+}
+
+tr:nth-child(2n) {
+    border-top: var(--border-width) solid black;
+    border-bottom: var(--border-width) solid black;
+}
+
+td:nth-child(2) {
+    border-left: var(--border-width) solid black;
+    border-right: var(--border-width) solid black;
+}
