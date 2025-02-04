@@ -13,9 +13,9 @@ let gameEl = document.getElementById('game');
 // Display the game state
 let render = () => {
     let boardEl = document.createElement('table');
-    for (let row of board){
+    for (let row of board) {
         let rowEl = document.createElement('tr');
-        for (let cell of row){
+        for (let cell of row) {
             let cellEl = document.createElement('td');
             cellEl.textContent = cell;
             rowEl.appendChild(cellEl);
@@ -28,6 +28,7 @@ let render = () => {
 
 // Initialize the game
 let init = () => {
+    let board = [];
     // Create a 3x3 board
     for (let i = 0; i < 3; i++) {
         board[i] = [];
@@ -35,8 +36,6 @@ let init = () => {
             board[i].push('_');
         }
     }
-    // Display the board
-    render();
 }
 
 let checkWin = () => {
@@ -86,7 +85,7 @@ let aiMove = () => {
     // Pick the first empty cell
     for (let y in board) {
         for (let x in board[y]) {
-            if (board[y][x] === '_'){
+            if (board[y][x] === '_') {
                 playTile(y, x);
                 return;
             }
@@ -111,6 +110,16 @@ let handleClick = (event) => {
     }
     if (currentPlayer === 'O') {
         aiMove();
+    }
+    if (checkWin()) {
+        statusEl.textContent = `${currentPlayer === 'X' ? 'O' : 'X'} wins!`;
+        gameOver = true;
+        return;
+    }
+    if (checkTie()) {
+        statusEl.textContent = 'It\'s a tie!';
+        gameOver = true;
+        return;
     }
 }
 
