@@ -35,12 +35,7 @@ let init = () => {
             board[i].push('_');
         }
     }
-    // Add event listeners to each cell
-    let cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => {
-        cell.addEventListener('click', handleClick);
-    });
-    // Display the board
+        // Display the board
     render();
 }
 
